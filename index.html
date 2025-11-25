@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zuio.cz – Vyhledávání dárků podle událostí</title>
+    <title>Zuio.cz – Dárky z ruční výroby a originální handmade inzerce</title>
 
     <meta name="description"
         content="Zuio.cz – inzerce ruční výroby. Objevte originální dárky od šikovných tvůrců: ručně vyráběné dekorace, šperky, doplňky, dřevěné výrobky, textil, dárky k narozeninám, svatbě, výročí i jen tak pro radost.">
@@ -24,10 +24,76 @@
     <meta property="og:type" content="website">
 
     <!--JSON-LD pro handmade inzerci-->
+    <link rel="stylesheet" href="styl.css">
 </head>
 
 <body>
+    <!--logo a navbar-->
+    <div class="komplet">
+        <div class="head">
+            <div class="logo">
+                <a href="https://www.zuio.cz/" title="Zuio.cz - Dárková inzerce">
+                    <img src="logo-zuio.png" width="34" height="34" alt="Zuio.cz - Dárková inzerce.">
+                </a>
+            </div>
+            <div class="logotext">
+                <strong>najděte unikátní dárky od šikovných tvůrců</strong>
+            </div>
+            <div class="headnavbar">
+                <a href="https://www.zuio.cz/oblibene.php">Oblíbené inzeráty</a>
+                <a href="https://www.zuio.cz/moje-inzeraty.php">Moje inzeráty</a>
+                <a href="/pridat-inzerat.php"><span class="pridati">Přidat inzerát</span></a>
+            </div>
+        </div>
 
+
+        <!--vyhledávací lišta-->
+        <!--bazos má:<form class="listah" method="get" action="/search.php"> -->
+        <form class="lista" method="get" action="/search.php">
+
+            <div class="listanavbar">
+                <label for="hledat"><b>Co:</b></label>
+                <input id="hledat" type="search" name="hledat" placeholder="Hledat..." title="Co hledáte?">
+            </div>
+
+            <div class="listanavbar">
+                <label for="rubriky"><b>Komu:</b></label>
+                <select id="rubriky" name="rubriky">
+                    <option value="www" selected>Vyberte</option>
+                    <option value="holcicka">Holčička</option>
+                    <option value="chlapecek">Chlapeček</option>
+                    <option value="zena">Žena</option>
+                    <option value="muz">Muž</option>
+                    <option value="mne">Mně</option>
+                </select>
+            </div>
+
+            <div class="listanavbar">
+                <label for="rubriky2"><b>Událost:</b></label>
+                <select id="rubriky2" name="rubriky2">
+                    <option value="www" selected>Všechny události</option>
+                    <option value="krtiny">Narození/křtiny</option>
+                    <option value="narozeniny">Narozeniny</option>
+                    <option value="svatek">Svátek</option>
+                    <option value="svatba">Svatba</option>
+                    <option value="vyroci">Výročí</option>
+                    <option value="jubilea">Jubilea</option>
+                    <option value="pro_radost">Pro radost</option>
+                    <option value="smutecnidary">Smuteční dary</option>
+                </select>
+            </div>
+
+            <div class="listanavbar cena">
+                <label><b>Cena:</b></label>
+                <input type="number" name="cenaod" placeholder="Od" min="0"> -
+                <input type="number" name="cenado" placeholder="Do" min="0"> Kč
+            </div>
+
+            <input type="submit" value="Hledat">
+
+        </form>
+
+    </div>
 
 </body>
 

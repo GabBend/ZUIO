@@ -1,0 +1,243 @@
+/* ---------- ZÁKLADNÍ ---------- */
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+
+.komplet {
+    width: 100%;
+    max-width: max-content;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* ---------- HLAVIČKA ---------- */
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.logo img {
+    display: block;
+    max-height: 50px;
+}
+
+.logotext strong {
+    font-size: 1rem;
+    color: #0d0d0d;
+}
+
+.headnavbar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.headnavbar a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #1877F2;
+    font-weight: bold;
+}
+
+.headnavbar a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- MODRÁ LIŠTA ---------- */
+.lista {
+    display: flex;
+    flex-wrap: wrap;
+    /* zalamování místo scrollu */
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 10px;
+    background-color: #1877F2;
+    border: 1px solid #D0E6FF;
+    border-radius: 3px;
+    color: #fff;
+    box-sizing: border-box;
+    overflow-x: visible;
+    /* žádný scroll */
+}
+
+/* jednotlivé bloky polí */
+.listanavbar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1 1 auto;
+    /* umožní zmenšení, pokud se nevejde */
+    min-width: 70px;
+    white-space: nowrap;
+}
+
+/* label a b uvnitř bloku */
+.listanavbar label,
+.listanavbar b {
+    margin-left: 12px;
+    margin-right: 3px;
+    /* mezery – od kraje bloku */
+}
+
+/* ---------- INPUTY, SELECTY, TLAČÍTKA ---------- */
+.listanavbar input[type="search"],
+.listanavbar select,
+.listanavbar input[type="number"] {
+    height: 33px;
+    line-height: 33px;
+    padding: 0 6px;
+    box-sizing: border-box;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.lista input[type="submit"] {
+    height: 33px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    background-color: #FF5722;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------- NADPIS ---------- */
+h1 {
+    text-align: center;
+    color: #1877F2;
+    margin-bottom: 30px;
+}
+
+/* ---------- UDÁLOSTI / KATEGORIE ---------- */
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.icontblcell {
+    flex: 1 1 180px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.icontblcell:hover {
+    background: #dbe9ff;
+    transform: translateY(-2px);
+}
+
+.icontblcell img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.icontblcell div {
+    color: #1a73e8;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+}
+
+/* ---------- RESPONZIVITA TABLET ---------- */
+@media (max-width: 768px) {
+    .lista {
+        flex-wrap: wrap;
+    }
+
+    .listanavbar {
+        flex: 1 1 45%;
+    }
+
+    .lista input[type="submit"] {
+        flex: 1 1 100%;
+    }
+
+    .icontblcell {
+        flex: 1 1 45%;
+    }
+
+    .head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .headnavbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* ---------- RESPONZIVITA MOBIL ---------- */
+@media (max-width: 480px) {
+    .komplet {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .lista {
+        flex-wrap: wrap;
+    }
+
+    .listanavbar:not(.cena) {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    .listanavbar.cena {
+        flex: 1 1 100%;
+        display: flex;
+        gap: 4px;
+        flex-wrap: nowrap;
+    }
+
+    .listanavbar.cena input[type="number"] {
+        flex: 1 1 40%;
+        min-width: 30px;
+    }
+
+    .lista input[type="submit"] {
+        flex: 1 1 100%;
+        margin-top: 4px;
+    }
+
+    .icontblcell {
+        flex: 1 1 100%;
+    }
+
+    .head {
+        align-items: flex-start;
+    }
+
+    .headnavbar a {
+        margin-left: 0;
+    }
+}
