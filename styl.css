@@ -118,49 +118,6 @@ body {
     justify-content: center;
 }
 
-/* ---------- NADPIS ---------- */
-h1 {
-    text-align: center;
-    color: #1877F2;
-    margin-bottom: 30px;
-}
-
-/* ---------- UDÁLOSTI / KATEGORIE ---------- */
-.categories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.icontblcell {
-    flex: 1 1 180px;
-    background: #fff;
-    border-radius: 5px;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.icontblcell:hover {
-    background: #dbe9ff;
-    transform: translateY(-2px);
-}
-
-.icontblcell img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-}
-
-.icontblcell div {
-    color: #1a73e8;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: 0.3px;
-}
 
 /* ---------- RESPONZIVITA TABLET ---------- */
 @media (max-width: 768px) {
