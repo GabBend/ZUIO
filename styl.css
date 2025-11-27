@@ -117,7 +117,7 @@ label[for="rubriky"] {
 }
 
 /* ---------- TABLET ---------- */
-@media (max-width: 768px) {
+@media (max-width: 795px) {
     .lista {
         padding: 8px 16px;
         flex-wrap: wrap;
@@ -170,7 +170,7 @@ label[for="rubriky"] {
 }
 
 /* MEZILEHLÉ OBRAZOVKY */
-@media (max-width: 1040px) and (min-width: 769px) {
+@media (max-width: 1040px) and (min-width: 794px) {
     .lista {
         flex-wrap: wrap;
         /* dovolíme zalomení */
@@ -235,7 +235,7 @@ label[for="rubriky"] {
 
 /* ---------- MOBIL ---------- */
 /* ---------- MOBILNÍ VERZE ---------- */
-@media (max-width: 480px) {
+@media (max-width: 655px) {
     .lista {
         padding: 8px 5px;
         flex-wrap: wrap;
