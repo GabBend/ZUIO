@@ -45,34 +45,34 @@
 
     <form class="lista" method="get" action="/search.php">
 
-        <div class="modralista-row">
-            <div class="modralista-komu">
-                <label for="rubriky"><b>Komu:</b></label>
-                <select id="rubriky" name="rubriky">
-                    <option value="www" selected>Vyberte</option>
-                    <option value="holcicka">Holčička</option>
-                    <option value="chlapecek">Chlapeček</option>
-                    <option value="zena">Žena</option>
-                    <option value="muz">Muž</option>
-                    <option value="mne">Mně</option>
-                </select>
-            </div>
 
-            <div class="modralista-udalost">
-                <label for="rubriky2"><b>Událost:</b></label>
-                <select id="rubriky2" name="rubriky2">
-                    <option value="www" selected>Všechny události</option>
-                    <option value="krtiny">Narození/křtiny</option>
-                    <option value="narozeniny">Narozeniny</option>
-                    <option value="svatek">Svátek</option>
-                    <option value="svatba">Svatba</option>
-                    <option value="vyroci">Výročí</option>
-                    <option value="jubilea">Jubilea</option>
-                    <option value="pro_radost">Pro radost</option>
-                    <option value="smutecnidary">Smuteční dary</option>
-                </select>
-            </div>
+        <div class="modralista-komu">
+            <label for="rubriky"><b>Komu:</b></label>
+            <select id="rubriky" name="rubriky">
+                <option value="www" selected>Vyberte</option>
+                <option value="holcicka">Holčička</option>
+                <option value="chlapecek">Chlapeček</option>
+                <option value="zena">Žena</option>
+                <option value="muz">Muž</option>
+                <option value="mne">Mně</option>
+            </select>
         </div>
+
+        <div class="modralista-udalost">
+            <label for="rubriky2"><b>Událost:</b></label>
+            <select id="rubriky2" name="rubriky2">
+                <option value="www" selected>Všechny události</option>
+                <option value="krtiny">Narození/křtiny</option>
+                <option value="narozeniny">Narozeniny</option>
+                <option value="svatek">Svátek</option>
+                <option value="svatba">Svatba</option>
+                <option value="vyroci">Výročí</option>
+                <option value="jubilea">Jubilea</option>
+                <option value="pro_radost">Pro radost</option>
+                <option value="smutecnidary">Smuteční dary</option>
+            </select>
+        </div>
+
 
 
         <div class="modralista-vyhledavani">
@@ -82,10 +82,13 @@
 
         <div class="modralista-cena">
             <label><b>Cena:</b></label>
-            <input type="number" name="cenaod" placeholder="Od" min="0"> -
-            <input type="number" name="cenado" placeholder="Do" min="0"> Kč
+            <div class="cena-input">
+                <input type="number" name="cenaod" placeholder="Od" min="0"> Kč
+            </div>
+            <div class="cena-input">
+                <input type="number" name="cenado" placeholder="Do" min="0"> Kč
+            </div>
         </div>
-
 
         <div class="modralista-hledat">
             <input id="hledat" type="submit" value="Hledat">
