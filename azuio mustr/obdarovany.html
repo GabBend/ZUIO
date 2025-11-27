@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inzeráty</title>
+    <style>
+        body {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            background: #f0f0f0;
+        }
+
+        .sirka {
+            max-width: 1010px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .listalogor {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .listalogol img {
+            display: block;
+        }
+
+        .listalogom b {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .listalogop a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #1877F2;
+            font-weight: bold;
+        }
+
+        .listah {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+            background-color: #1877F2;
+            border: 1px solid #D0E6FF;
+            border-radius: 3px;
+            padding: 8px 10px;
+            color: #fff;
+            overflow-x: auto;
+            margin-bottom: 30px;
+        }
+
+        .listah b {
+            margin-right: 5px;
+        }
+
+        .listah input[type="search"],
+        .listah select,
+        .listah input[type="number"] {
+            flex: 1 1 auto;
+            min-width: 70px;
+            max-width: 120px;
+            padding: 4px 6px;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            font-size: 12px;
+        }
+
+        .listah input[type="submit"] {
+            flex: 0 0 auto;
+            padding: 5px 12px;
+            background-color: #FF5722;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .listah .field {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            white-space: nowrap;
+        }
+
+        /* Hlavní layout */
+        .main-layout {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Levý filtr */
+        .filter-panel {
+            flex: 0 0 220px;
+            background: #fff;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .filter-panel h3 {
+            color: #1877F2;
+            font-size: 14px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #dbe9ff;
+            padding-bottom: 5px;
+        }
+
+        .filter-panel .form-check {
+            margin-bottom: 6px;
+        }
+
+        /* Pravá část – inzeráty pod sebou */
+        .ads-list {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .ad-item {
+            display: flex;
+            background: #fff;
+            border-radius: 5px;
+            padding: 15px;
+            gap: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .ad-item img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+
+        .ad-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .ad-content .title {
+            font-weight: 600;
+            color: #1a73e8;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .ad-content .price {
+            color: #333;
+            font-size: 14px;
+        }
+
+        /* Responzivita */
+        @media (max-width: 768px) {
+            .listah {
+                flex-wrap: wrap;
+            }
+
+            .listah input[type="search"],
+            .listah select,
+            .listah input[type="number"] {
+                max-width: 100%;
+                flex: 1 1 45%;
+            }
+
+            .main-layout {
+                flex-direction: column;
+            }
+
+            .filter-panel {
+                width: 100%;
+                margin-bottom: 20px;
+                position: static;
+            }
+
+            .ad-item {
+                flex-direction: column;
+            }
+
+            .ad-item img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .listah input[type="search"],
+            .listah select,
+            .listah input[type="number"] {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sirka">
+        <!-- Logo a menu -->
+        <div class="listalogor">
+            <div class="listalogol">
+                <a href="https://www.zuio.cz/" title="Zuio.cz - Dárková inzerce">
+                    <img src="logo-zuio.png" width="34" height="34" alt="Zuio.cz - Dárková inzerce.">
+                </a>
+            </div>
+            <div class="listalogom"><b>... dárky pro každého</b></div>
+            <div class="listalogop">
+                <a href="https://www.zuio.cz/oblibene.php"><b>Oblíbené inzeráty</b></a>
+                <a href="https://www.zuio.cz/moje-inzeraty.php"><b>Moje inzeráty</b></a>
+                <a href="/pridat-inzerat.php"><b><span class="pridati">Přidat inzerát</span></b></a>
+            </div>
+        </div>
+
+        <!-- Vyhledávací lišta -->
+        <form class="listah" method="get" action="/search.php">
+            <div class="field"><b>Co:</b><input type="search" name="hledat" placeholder="Hledat..." title="Co hledáte?">
+            </div>
+            <div class="field"><b>Kategorie:</b>
+                <select name="rubriky">
+                    <option value="www" selected>Vyberte</option>
+                    <option value="holcicka">Holčička</option>
+                    <option value="chlapecek">Chlapeček</option>
+                    <option value="zena">Žena</option>
+                    <option value="muz">Muž</option>
+                    <option value="mne">Mně</option>
+                </select>
+            </div>
+            <div class="field"><b>Událost:</b>
+                <select name="rubriky2">
+                    <option value="www" selected>Všechny události</option>
+                    <option value="krtiny">Narození/křtiny</option>
+                    <option value="narozeniny">Narozeniny</option>
+                    <option value="svatek">Svátek</option>
+                    <option value="svatba">Svatba</option>
+                    <option value="vyroci">Výročí</option>
+                    <option value="jubilea">Jubilea</option>
+                    <option value="pro_radost">Pro radost</option>
+                    <option value="smutecnidary">Smuteční dary</option>
+                </select>
+            </div>
+            <div class="field"><b>Cena:</b>
+                <input type="number" name="cenaod" placeholder="Od" min="0"> -
+                <input type="number" name="cenado" placeholder="Do" min="0"> Kč
+            </div>
+            <input type="submit" value="Hledat">
+        </form>
+
+        <!-- Layout hlavní stránky -->
+        <div class="main-layout">
+            <!-- Levý filtr -->
+            <div class="filter-panel">
+                <h3>Obdarovaný</h3>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o1"><label
+                        class="form-check-label" for="o1">Partner/ka</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o2"><label
+                        class="form-check-label" for="o2">Děti</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o3"><label
+                        class="form-check-label" for="o3">Rodiče</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o4"><label
+                        class="form-check-label" for="o4">Prarodiče</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o5"><label
+                        class="form-check-label" for="o5">Sourozenci</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o6"><label
+                        class="form-check-label" for="o6">Příbuzní</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o7"><label
+                        class="form-check-label" for="o7">Přátelé</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o8"><label
+                        class="form-check-label" for="o8">Tajná láska</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o9"><label
+                        class="form-check-label" for="o9">Kolegové</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o10"><label
+                        class="form-check-label" for="o10">Klienti</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o11"><label
+                        class="form-check-label" for="o11">Učitelé</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="o12"><label
+                        class="form-check-label" for="o12">Nadřízení</label></div>
+
+                <h3>Pohlaví</h3>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="p1"><label
+                        class="form-check-label" for="p1">Holčička</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="p2"><label
+                        class="form-check-label" for="p2">Chlapeček</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="p3"><label
+                        class="form-check-label" for="p3">Žena</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="p4"><label
+                        class="form-check-label" for="p4">Muž</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="p5"><label
+                        class="form-check-label" for="p5">Mně</label></div>
+            </div>
+
+            <!-- Pravá část: inzeráty -->
+            <div class="ads-list">
+                <div class="ad-item">
+                    <img src="ads/img1.jpg" alt="Krásný plyšák">
+                    <div class="ad-content">
+                        <div class="title">Krásný plyšák</div>
+                        <div class="price">Cena: 350 Kč</div>
+                    </div>
+                </div>
+
+                <div class="ad-item">
+                    <img src="ads/img2.jpg" alt="Dárkový set čokolády">
+                    <div class="ad-content">
+                        <div class="title">Dárkový set čokolády</div>
+                        <div class="price">Cena: 250 Kč</div>
+                    </div>
+                </div>
+
+                <div class="ad-item">
+                    <img src="ads/img3.jpg" alt="Elegantní šátek">
+                    <div class="ad-content">
+                        <div class="title">Elegantní šátek</div>
+                        <div class="price">Cena: 500 Kč</div>
+                    </div>
+                </div>
+
+                <div class="ad-item">
+                    <img src="ads/img4.jpg" alt="Stolní hra pro děti">
+                    <div class="ad-content">
+                        <div class="title">Stolní hra pro děti</div>
+                        <div class="price">Cena: 399 Kč</div>
+                    </div>
+                </div>
+
+                <div class="ad-item">
+                    <img src="ads/img5.jpg" alt="Květinová dekorace">
+                    <div class="ad-content">
+                        <div class="title">Květinová dekorace</div>
+                        <div class="price">Cena: 180 Kč</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

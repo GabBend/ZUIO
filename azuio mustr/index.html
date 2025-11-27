@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyhledávání dárků a události</title>
+    <style>
+        body {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            background: #f0f0f0;
+        }
+
+        /*komplet*/
+        .sirka {
+            max-width: 1010px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* head */
+        .listalogor {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        /*logo*/
+        .listalogol img {
+            display: block;
+        }
+
+        /*logotext*/
+        .listalogom b {
+            font-size: 14px;
+            color: #333;
+        }
+
+        /*headnavbar*/
+        .listalogop a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #1877F2;
+            font-weight: bold;
+        }
+
+        /* Modrá lišta */
+        .listah {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+            background-color: #1877F2;
+            border: 1px solid #D0E6FF;
+            border-radius: 3px;
+            padding: 8px 10px;
+            color: #fff;
+            overflow-x: auto;
+            margin-bottom: 30px;
+        }
+
+        /*logotext*/
+        .listah b {
+            margin-right: 5px;
+        }
+
+        /*listah = lista*/
+        .listah input[type="search"],
+        .listah select,
+        .listah input[type="number"] {
+            flex: 1 1 auto;
+            min-width: 70px;
+            max-width: 120px;
+            padding: 4px 6px;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            font-size: 12px;
+        }
+
+        .listah input[type="submit"] {
+            flex: 0 0 auto;
+            padding: 5px 12px;
+            background-color: #FF5722;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .listah .field {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            white-space: nowrap;
+        }
+
+        /* Nadpis */
+        h1 {
+            text-align: center;
+            color: #1877F2;
+            margin-bottom: 30px;
+        }
+
+        /* Události */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .icontblcell {
+            flex: 1 1 180px;
+            background: #fff;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .icontblcell:hover {
+            background: #dbe9ff;
+            transform: translateY(-2px);
+        }
+
+        .icontblcell img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .icontblcell div {
+            color: #1a73e8;
+            /* modrá */
+            font-weight: 600;
+            /* výraznější tloušťka */
+            font-size: 15px;
+            /* o něco větší text */
+            letter-spacing: 0.3px;
+            /* jemné rozestupy – působí moderně */
+        }
+
+        /* Responzivita */
+        @media (max-width: 768px) {
+            .listah {
+                flex-wrap: wrap;
+            }
+
+            .listah input[type="search"],
+            .listah select,
+            .listah input[type="number"] {
+                max-width: 100%;
+                flex: 1 1 45%;
+            }
+
+            .icontblcell {
+                flex: 1 1 45%;
+            }
+
+            .listalogor {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .listalogop {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .listah input[type="search"],
+            .listah select,
+            .listah input[type="number"] {
+                flex: 1 1 100%;
+            }
+
+            .icontblcell {
+                flex: 1 1 100%;
+            }
+
+            .listalogor {
+                align-items: flex-start;
+            }
+
+            .listalogop a {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sirka">
+        <!-- Logo a menu -->
+        <div class="listalogor">
+            <div class="listalogol">
+                <a href="https://www.zuio.cz/" title="Zuio.cz - Dárková inzerce">
+                    <img src="logo-zuio.png" width="34" height="34" alt="Zuio.cz - Dárková inzerce.">
+                </a>
+            </div>
+            <div class="listalogom">
+                <b>... dárky pro každého</b>
+            </div>
+            <div class="listalogop">
+                <a href="https://www.zuio.cz/oblibene.php"><b>Oblíbené inzeráty</b></a>
+                <a href="https://www.zuio.cz/moje-inzeraty.php"><b>Moje inzeráty</b></a>
+                <a href="/pridat-inzerat.php"><b><span class="pridati">Přidat inzerát</span></b></a>
+            </div>
+        </div>
+
+        <!-- Vyhledávací lišta -->
+        <form class="listah" method="get" action="/search.php">
+            <div class="field">
+                <b>Co:</b>
+                <input type="search" name="hledat" placeholder="Hledat..." title="Co hledáte?">
+            </div>
+
+            <div class="field">
+                <b>Kategorie:</b>
+                <select name="rubriky">
+                    <option value="www" selected>Vyberte</option>
+                    <option value="holcicka">Holčička</option>
+                    <option value="chlapecek">Chlapeček</option>
+                    <option value="zena">Žena</option>
+                    <option value="muz">Muž</option>
+                    <option value="mne">Mně</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <b>Událost:</b>
+                <select name="rubriky2">
+                    <option value="www" selected>Všechny události</option>
+                    <option value="krtiny">Narození/křtiny</option>
+                    <option value="narozeniny">Narozeniny</option>
+                    <option value="svatek">Svátek</option>
+                    <option value="svatba">Svatba</option>
+                    <option value="vyroci">Výročí</option>
+                    <option value="jubilea">Jubilea</option>
+                    <option value="pro_radost">Pro radost</option>
+                    <option value="smutecnidary">Smuteční dary</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <b>Cena:</b>
+                <input type="number" name="cenaod" placeholder="Od" min="0"> -
+                <input type="number" name="cenado" placeholder="Do" min="0"> Kč
+            </div>
+
+            <input type="submit" value="Hledat">
+        </form>
+
+        <!-- Nadpis událostí -->
+        <h1>Vyberte událost</h1>
+
+        <!-- Kategorie událostí -->
+        <div class="categories">
+            <div class="icontblcell" data-event="krtiny" onclick="window.location.href='obdarovany.html?event=krtiny'">
+                <img src="icons/narozeni.svg" alt="Narození/křtiny">
+                <div>Narození/křtiny</div>
+            </div>
+            <div class="icontblcell" data-event="narozeniny"
+                onclick="window.location.href='obdarovany.html?event=narozeniny'">
+                <img src="icons/narozeniny.svg" alt="Narozeniny">
+                <div>Narozeniny</div>
+            </div>
+            <div class="icontblcell" data-event="svatek" onclick="window.location.href='obdarovany.html?event=svatek'">
+                <img src="icons/svatek.svg" alt="Svátek">
+                <div>Svátek</div>
+            </div>
+            <div class="icontblcell" data-event="svatba" onclick="window.location.href='obdarovany.html?event=svatba'">
+                <img src="icons/svatba.svg" alt="Svatba">
+                <div>Svatba</div>
+            </div>
+            <div class="icontblcell" data-event="vyroci" onclick="window.location.href='obdarovany.html?event=vyroci'">
+                <img src="icons/vyroci.svg" alt="Výročí">
+                <div>Výročí</div>
+            </div>
+            <div class="icontblcell" data-event="jubilea"
+                onclick="window.location.href='obdarovany.html?event=jubilea'">
+                <img src="icons/jubilea.svg" alt="Jubilea">
+                <div>Jubilea</div>
+            </div>
+            <div class="icontblcell" data-event="pro_radost"
+                onclick="window.location.href='obdarovany.html?event=pro_radost'">
+                <img src="icons/radost.svg" alt="Pro radost">
+                <div>Pro radost</div>
+            </div>
+            <div class="icontblcell" data-event="smutecnidary"
+                onclick="window.location.href='obdarovany.html?event=smutecnidary'">
+                <img src="icons/umrti.svg" alt="Smuteční dary">
+                <div>Smuteční dary</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
