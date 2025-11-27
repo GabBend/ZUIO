@@ -6,6 +6,65 @@ body {
     background: #fff;
 }
 
+.hlavicka {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px 20px 10px;
+    /* nahoře 15px, dole 20px, po stranách 10px */
+    margin: 0 auto;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.logo img {
+    display: block;
+    max-height: 50px;
+}
+
+.logobox {
+    display: flex;
+    align-items: center;
+    /* srovná vertikálně */
+    gap: 10px;
+    /* mezera mezi logem a textem */
+}
+
+.logotext {
+
+    font-size: 14px;
+    /* trochu větší než základní text, ale ne přehnaně */
+    font-weight: 500;
+    /* jemné zvýraznění */
+    color: #0d0d0d;
+    /* tmavě šedá, ne černá, působí měkčeji */
+    margin: 5px 0 15px 0;
+    /* mezera nahoře a dole pro lepší čitelnost */
+    line-height: 1.4;
+    /* zlepší čitelnost na více řádcích */
+    text-align: center;
+    /* střed pro vizuální rovnováhu */
+
+}
+
+.navigace {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.navigace a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #192433;
+    font-weight: bold;
+}
+
+.navigace a:hover {
+    text-decoration: underline;
+}
+
 /* ---------- MODRÁ LIŠTA ---------- */
 .lista {
     display: flex;
@@ -24,6 +83,8 @@ body {
     color: #fff;
     box-sizing: border-box;
 }
+
+
 
 /* ---------- ŘÁDEK Komu + Událost ---------- */
 .modralista-row {
@@ -117,60 +178,33 @@ label[for="rubriky"] {
 }
 
 /* ---------- TABLET ---------- */
-@media (max-width: 795px) {
-    .lista {
-        padding: 8px 16px;
-        flex-wrap: wrap;
+
+/* MEZILEHLÉ OBRAZOVKY */
+@media (max-width: 1040px) and (min-width: 656px) {
+    .navigace {
+        justify-content: flex-end;
+        width: 100%;
+        /* aby flexbox věděl, kolik místa má */
     }
 
-    /* Komu a Událost – každý blok celý řádek */
-    .modralista-komu,
-    .modralista-udalost {
-        flex: 1 1 100%;
-        min-width: 0;
+    .hlavicka {
+
+        padding-top: 5px;
+        /* menší mezera nahoře */
+        padding-bottom: 12px;
+        /* menší mezera dole */
     }
 
-    /* Vyhledávání – Co a Cena vedle sebe */
-    .modralista-vyhledavani {
-        flex: 1 1 60%;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        min-width: 0;
-    }
-
-    .modralista-cena {
-        flex: 1 1 38%;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        min-width: 0;
-    }
-
-    .modralista-vyhledavani input[type="search"],
-    .modralista-cena input[type="number"] {
-        flex: 1 1 100%;
-        min-width: 0;
-        box-sizing: border-box;
-    }
-
-    /* Tlačítko Hledat pod bloky */
-    .modralista-hledat {
-        flex: 1 1 100%;
-        margin-top: 6px;
-    }
-
-    .modralista-hledat input[type="submit"] {
+    .navigace {
+        justify-content: flex-end;
         width: 100%;
     }
 
-    .lista label {
-        width: 70px;
+    .navigace a {
+        text-align: right;
+        /* odkazy drží vpravo */
     }
-}
 
-/* MEZILEHLÉ OBRAZOVKY */
-@media (max-width: 1040px) and (min-width: 794px) {
     .lista {
         flex-wrap: wrap;
         /* dovolíme zalomení */
@@ -234,12 +268,45 @@ label[for="rubriky"] {
 }
 
 /* ---------- MOBIL ---------- */
-/* ---------- MOBILNÍ VERZE ---------- */
-@media (max-width: 655px) {
+
+@media (max-width: 655.9px) {
+    .hlavicka {
+        padding-top: 10px;
+        /* menší vertikální mezera nahoře pro mobil */
+        padding-bottom: 15px;
+    }
+
+    .logotext {
+        font-size: 13px;
+        /* mírně menší, aby se vešel */
+        margin: 5px 0 10px 0;
+    }
+
+    .navigace {
+        justify-content: flex-end;
+        /* drží odkazy vpravo */
+        width: 100%;
+        flex-wrap: nowrap;
+        /* zakáže zalamování */
+        overflow-x: auto;
+        /* pokud by se nevešly, umožní horizontální scroll */
+    }
+
+    .navigace a {
+        text-align: center;
+        /* aby odkazy byly pěkně vycentrované vertikálně */
+        white-space: nowrap;
+        /* nedovolí zalomení textu */
+        padding: 0 2px;
+        /* malá mezera mezi odkazy */
+        font-size: 12px;
+    }
+
     .lista {
         padding: 8px 5px;
         flex-wrap: wrap;
     }
+
 
     /* Komu, Událost, Vyhledávání Co */
     .modralista-komu,
@@ -299,8 +366,27 @@ label[for="rubriky"] {
     }
 
     /* Tlačítko Hledat */
+    .modralista-hledat {
+        width: 100%;
+        /* blok zabere celou šířku */
+        display: flex;
+        /* flex pro snadné centrování */
+        justify-content: center;
+        /* vycentruje obsah horizontálně */
+        margin-top: 10px;
+        /* mezera od předchozího řádku */
+    }
+
     .modralista-hledat input[type="submit"] {
-        flex: 1 1 100%;
+        width: 100%;
+        /* tlačítko vyplní celý blok */
         max-width: 100%;
+        /* nepřeteče rodiče */
+        box-sizing: border-box;
+        /* padding a border nezvětšují šířku */
+        padding: 10px;
+        /* příjemná výška tlačítka */
+        font-size: 14px;
+        /* čitelný text */
     }
 }
