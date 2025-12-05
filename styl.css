@@ -1,11 +1,12 @@
 body {
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    height: 100%;
+    font-size: 12px;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     background: #fff;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .hlavicka {
@@ -13,10 +14,25 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 10px 20px 10px;
-    /* nahoře 15px, dole 20px, po stranách 10px */
-    margin: 0 auto;
     max-width: 1200px;
+    /* omezíme šířku */
+    width: 100%;
+    /* nutné pro responsivitu */
     flex-wrap: wrap;
+    box-sizing: border-box;
+    margin-left: auto;
+    /* zarovná vlevo/pravé mezery stejný jako obsah */
+    margin-right: auto;
+
+}
+
+main.obsah {
+    flex: 1 0 auto;
+    max-width: 1200px;
+    /* stejný kontejner jako hlavička */
+    width: 100%;
+    margin: 0 auto;
+    /* centrování */
     box-sizing: border-box;
 }
 
@@ -228,39 +244,32 @@ h1 {
 
 
 .paticka {
-    position: absolute;
-    /* nebo fixed, pokud má být stále vidět */
-    bottom: 0;
-    left: 0;
-    width: 100%;
-
-
+    flex-shrink: 0;
+    /* footer se nezmenšuje */
     padding: 20px 10px;
-    text-align: center;
-}
-
-.paticka a {
-    color: #ccc;
-    text-decoration: none;
-    margin: 0 5px;
-}
-
-.paticka a:hover {
-    text-decoration: underline;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #fff;
+    /* můžeš změnit barvu pozadí */
 }
 
 .footer-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    /* vycentrované doprava */
+    align-items: flex-end;
+    /* drží se dolů uvnitř footeru */
     max-width: 1200px;
     margin: 0 auto;
+    /* centrování kontejneru stránky */
     flex-wrap: wrap;
     gap: 20px;
     box-sizing: border-box;
 }
 
 .footer-column {
-    flex: 1 1 200px;
+    flex: 0 0 auto;
+    /* velikost podle obsahu */
     min-width: 180px;
 }
 
@@ -342,50 +351,45 @@ main.obsah {
         min-width: 200px;
     }
 
-    /* Vyhledávání */
     .modralista-co {
-        flex: 1 1 48%;
-        /* sníženo, aby Cena měla místo */
+        flex: 1 1 38%;
         display: flex;
         align-items: center;
-        gap: 5px;
-        /* mezera mezi label a inputy */
+        gap: 6px;
+        min-width: 0;
+        /* dovolí smrštění */
     }
 
-    /* Cena */
     .modralista-cena {
+        flex: 1 1 38%;
+        /* ponechat procenta, aby vedle Co seděla */
         display: flex;
         align-items: center;
-        /* vertikální zarovnání */
         justify-content: flex-start;
-        gap: 10px;
+        gap: 6px;
         /* mezera mezi label a input */
         min-width: 0;
-        /* aby input mohl smrštit */
+        text-align: left;
     }
 
     .modralista-cena label {
         width: 70px;
-        /* pevná šířka labelu pro všechny */
-        text-align: right;
-        /* text zarovnán vlevo */
         margin: 0;
-        padding-left: 0px;
+        padding-left: 0;
         flex-shrink: 0;
         /* label se nezmenší */
+        text-align: right;
     }
 
     .modralista-cena input[type="number"] {
         flex: 1 1 auto;
         /* vyplní zbytek řádku */
         min-width: 120px;
-        /* minimální šířka */
         max-width: 180px;
-        /* nepřesáhne */
         height: 35px;
         padding: 0 6px;
         box-sizing: border-box;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     /* Zrušení konfliktu se starým pravidlem */
@@ -558,16 +562,22 @@ main.obsah {
     }
 
     .footer-container {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+        flex-direction: row;
+        /* sloupce vedle sebe */
+        justify-content: center;
+        /* zarovná uprostřed horizontálně */
         text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        gap: 0;
+        /* odstraní mezery mezi sloupci */
     }
 
     .footer-column {
-        min-width: 100%;
-    }
-
-    .social-icons {
-        justify-content: center;
+        min-width: auto;
+        /* sloupec se smrskne na obsah */
+        margin: 0;
+        /* odstraní spodní mezeru */
     }
 }
