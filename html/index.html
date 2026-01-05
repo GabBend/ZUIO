@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zuio.cz – Dárky z ruční výroby a originální handmade inzerce</title>
+    <title>Zuio.cz – Dárky z ruční výroby a originální handmade inzerce</title>
 
     <meta name="description"
         content="Zuio.cz – inzerce ruční výroby. Objevte originální dárky od šikovných tvůrců: ručně vyráběné dekorace, šperky, doplňky, dřevěné výrobky, textil, dárky k narozeninám, svatbě, výročí i jen tak pro radost.">
@@ -18,7 +18,7 @@
     <!-- OpenGraph: sdílení na soc.sítích -->
     <meta property="og:title" content="Zuio.cz – Dárky z ruční výroby">
     <meta property="og:description"
-        content="zuio.cz – dárky z ruční výroby. Najděte originální handmade dárky pro každou událost.">
+        content="Zuio.cz – dárky z ruční výroby. Najděte originální handmade dárky pro každou událost.">
     <meta property="og:image" content="https://www.zuio.cz/logo-zuio.png">
     <meta property="og:url" content="https://www.zuio.cz/">
     <meta property="og:type" content="website">
@@ -29,13 +29,13 @@
 
 <body>
 
-
     <header class="hlavicka">
         <div class="logobox">
             <div class="logo">
-                <a href="https://www.zuio.cz/"><img src="logo-zuio.png" alt="Logo Zuio"></a>
+                <a href="https://www.zuio.cz/"><img src="icons/logo.png" alt="Logo Zuio"></a>
             </div>
-            <div class="logotext">ten pravý dárek pro každou událost</div>
+            <br>
+            <div class="logotext">Najděte ten pravý dárek pro každou událost...</div>
         </div>
         <nav class="navigace">
             <a href="#">Oblíbené inzeráty</a>
@@ -60,8 +60,8 @@
             </select>
         </div>
 
-        <div class="modralista-prilezitost">
-            <label for="rubriky2"><b>Příležitost:</b></label>
+        <div class="modralista-udalost">
+            <label for="rubriky2"><b>Událost:</b></label>
             <select id="rubriky2" name="rubriky2">
                 <option value="www" selected>Všechny události</option>
                 <option value="krtiny">Narození/křtiny</option>
@@ -95,9 +95,74 @@
         <div class="modralista-hledat">
             <input id="hledat" type="submit" value="Hledat">
         </div>
-
-
     </form>
+
+
+    <h1> Najděte dárek podle příležitost </h1>
+
+    <br><br>
+
+    <!-- Kategorie událostí -->
+    <div class="prilezitosti">
+        <div class="prilezitosticon" data-event="krtiny" onclick="window.location.href='obdarovany.html?event=krtiny'">
+            <img src="icons/narozeni.svg" alt="Narození/křtiny">
+            <div>Narození/křtiny</div>
+        </div>
+        <div class="prilezitosticon" data-event="narozeniny"
+            onclick="window.location.href='obdarovany.html?event=narozeniny'">
+            <img src="icons/narozeniny.svg" alt="Narozeniny">
+            <div>Narozeniny</div>
+        </div>
+        <div class="prilezitosticon" data-event="svatek" onclick="window.location.href='obdarovany.html?event=svatek'">
+            <img src="icons/svatek.svg" alt="Svátek">
+            <div>Svátek</div>
+        </div>
+        <div class="prilezitosticon" data-event="svatba" onclick="window.location.href='obdarovany.html?event=svatba'">
+            <img src="icons/svatba.svg" alt="Svatba">
+            <div>Svatba</div>
+        </div>
+        <div class="prilezitosticon" data-event="vyroci" onclick="window.location.href='obdarovany.html?event=vyroci'">
+            <img src="icons/vyroci.svg" alt="Výročí">
+            <div>Výročí</div>
+        </div>
+        <div class="prilezitosticon" data-event="jubilea"
+            onclick="window.location.href='obdarovany.html?event=jubilea'">
+            <img src="icons/jubilea.svg" alt="Jubilea">
+            <div>Jubilea</div>
+        </div>
+        <div class="prilezitosticon" data-event="pro_radost"
+            onclick="window.location.href='obdarovany.html?event=pro_radost'">
+            <img src="icons/radost.svg" alt="Pro radost">
+            <div>Pro radost</div>
+        </div>
+        <div class="prilezitosticon" data-event="smutecnidary"
+            onclick="window.location.href='obdarovany.html?event=smutecnidary'">
+            <img src="icons/umrti.svg" alt="Smuteční dary">
+            <div>Smuteční dary</div>
+        </div>
+    </div>
+    <br><br>
+    <footer class="paticka">
+        <div class="footer-container">
+
+            <!-- Sloupec 1: O webu -->
+            <div class="footer-column">
+                <h3>O Zuio.cz</h3>
+                <p>© 2025 Zuio.cz <br>– originální dárky a handmade inzerce.
+                </p>
+            </div>
+
+            <!-- Sloupec 2: Rychlé odkazy -->
+            <div class="footer-column">
+                <h3>Rychlé odkazy</h3>
+                <ul>
+                    <li><a href="#">Nápověda</a></li>
+                    <li><a href="#">Ochrana údajů</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
 
 </body>

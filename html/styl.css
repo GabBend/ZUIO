@@ -1,9 +1,12 @@
 body {
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 12px;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     background: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 .hlavicka {
@@ -11,10 +14,20 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 10px 20px 10px;
-    /* nahoře 15px, dole 20px, po stranách 10px */
-    margin: 0 auto;
     max-width: 1200px;
+    width: 100%;
     flex-wrap: wrap;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+main.obsah {
+    flex: 1 0 auto;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
     box-sizing: border-box;
 }
 
@@ -26,25 +39,19 @@ body {
 .logobox {
     display: flex;
     align-items: center;
-    /* srovná vertikálně */
     gap: 10px;
-    /* mezera mezi logem a textem */
 }
 
 .logotext {
 
     font-size: 14px;
-    /* trochu větší než základní text, ale ne přehnaně */
     font-weight: 500;
-    /* jemné zvýraznění */
     color: #0d0d0d;
-    /* tmavě šedá, ne černá, působí měkčeji */
-    margin: 5px 0 15px 0;
-    /* mezera nahoře a dole pro lepší čitelnost */
+    margin-top: 12px;
+    margin-bottom: 8px;
     line-height: 1.4;
-    /* zlepší čitelnost na více řádcích */
     text-align: center;
-    /* střed pro vizuální rovnováhu */
+
 
 }
 
@@ -59,23 +66,26 @@ body {
     text-decoration: none;
     color: #192433;
     font-weight: bold;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
 }
 
 .navigace a:hover {
-    text-decoration: underline;
+    color: #FF5722;
+    border-bottom-color: #FF5722;
 }
 
 /* ---------- MODRÁ LIŠTA ---------- */
 .lista {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     gap: 8px;
     width: 100%;
     max-width: 1200px;
-    /* maximální šířka lišty */
     margin: 0 auto;
-    /* centrování horizontálně */
     padding: 8px 10px;
     background-color: #1877F2;
     border: 1px solid #D0E6FF;
@@ -84,22 +94,11 @@ body {
     box-sizing: border-box;
 }
 
-
-
-/* ---------- ŘÁDEK Komu + Událost ---------- */
-.modralista-row {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 8px;
-    flex: 1;
-}
-
 .modralista-komu,
-.modralista-prilezitost,
+.modralista-udalost,
 .modralista-co {
     flex: 1 1 0;
-    /* → rovnoměrné rozložení */
-    min-width: 0;
+    min-width: 220px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -110,14 +109,12 @@ label[for="rubriky"] {
 
 }
 
-/* ---------- BLOK Cena ---------- */
 .modralista-cena,
 .modralista-hledat {
     display: flex;
     align-items: center;
     gap: 4px;
     flex: 0 0 auto;
-    /* drží pevnou šířku */
     white-space: nowrap;
 }
 
@@ -141,11 +138,8 @@ label[for="rubriky"] {
     box-sizing: border-box;
 
     flex: 1 1 auto;
-    /* vyplní dostupný prostor */
     min-width: 150px;
-    /* ručně zvětšená minimální šířka */
     max-width: 300px;
-    /* nepřetéká příliš */
 }
 
 .lista input[type="number"] {
@@ -173,10 +167,119 @@ label[for="rubriky"] {
 .lista label {
     display: inline-block;
     text-align: right;
-    /* zarovnání doprava uvnitř bloku */
     width: 80px;
 }
 
+h1 {
+    max-width: 1200px;
+    margin: 20px auto 10px auto;
+    padding: 0 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.prilezitosti {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.prilezitosticon {
+    flex: 1 1 180px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.prilezitosticon:hover {
+    background: #dbe9ff;
+    transform: translateY(-2px);
+}
+
+.prilezitosticon img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.prilezitosticon div {
+    color: #1a73e8;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+
+}
+
+
+.paticka {
+    flex-shrink: 0;
+    padding: 20px 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #fff;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.footer-column {
+    flex: 0 0 auto;
+    min-width: 180px;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #1a73e8;
+
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 6px;
+}
+
+.footer-column a {
+    text-decoration: none;
+    color: #192433;
+    transition: color 0.2s;
+}
+
+.footer-column a:hover {
+    color: #1a73e8;
+}
+
+
+main.obsah {
+    flex: 1 0 auto;
+}
+
+/* ---------- TABLET ---------- */
+/* ---------- TABLET ---------- */
+/* ---------- TABLET ---------- */
 /* ---------- TABLET ---------- */
 
 /* MEZILEHLÉ OBRAZOVKY */
@@ -184,15 +287,12 @@ label[for="rubriky"] {
     .navigace {
         justify-content: flex-end;
         width: 100%;
-        /* aby flexbox věděl, kolik místa má */
     }
 
     .hlavicka {
 
         padding-top: 5px;
-        /* menší mezera nahoře */
         padding-bottom: 12px;
-        /* menší mezera dole */
     }
 
     .navigace {
@@ -202,92 +302,75 @@ label[for="rubriky"] {
 
     .navigace a {
         text-align: right;
-        /* odkazy drží vpravo */
     }
 
     .lista {
         flex-wrap: wrap;
-        /* dovolíme zalomení */
         padding: 8px 16px;
-        /* trochu více prostoru po stranách */
     }
 
 
     /* Bloky Komu a Událost */
     .modralista-komu,
-    .modralista-prilezitost {
+    .modralista-udalost {
         flex: 1 1 48%;
         min-width: 200px;
     }
 
-    /* Vyhledávání */
     .modralista-co {
-        flex: 1 1 48%;
-        /* sníženo, aby Cena měla místo */
+        flex: 1 1 38%;
         display: flex;
         align-items: center;
-        gap: 5px;
-        /* mezera mezi label a inputy */
+        gap: 6px;
+        min-width: 0;
     }
 
-    /* Cena */
     .modralista-cena {
+        flex: 1 1 38%;
         display: flex;
         align-items: center;
-        /* vertikální zarovnání */
         justify-content: flex-start;
-        gap: 10px;
-        /* mezera mezi label a input */
+        gap: 6px;
         min-width: 0;
-        /* aby input mohl smrštit */
+        text-align: left;
     }
 
     .modralista-cena label {
         width: 70px;
-        /* pevná šířka labelu pro všechny */
-        text-align: right;
-        /* text zarovnán vlevo */
         margin: 0;
-        padding-left: 0px;
+        padding-left: 0;
         flex-shrink: 0;
-        /* label se nezmenší */
+        text-align: right;
     }
 
     .modralista-cena input[type="number"] {
         flex: 1 1 auto;
-        /* vyplní zbytek řádku */
         min-width: 120px;
-        /* minimální šířka */
         max-width: 180px;
-        /* nepřesáhne */
         height: 35px;
         padding: 0 6px;
         box-sizing: border-box;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     /* Zrušení konfliktu se starým pravidlem */
     .modralista-co input[type="search"],
     .modralista-cena input[type="number"] {
         flex: unset;
-        /* ruší flex:1 1 100% */
     }
 
     /* Tlačítko Hledat */
     .modralista-hledat {
         flex: 1 1 100%;
-        /* zabere celý řádek */
         min-width: 0;
         margin-top: 6px;
     }
 
     .modralista-hledat input[type="submit"] {
         width: 100%;
-        /* tlačítko vyplní celý blok */
         box-sizing: border-box;
     }
 
-    /* Labels mohou být menší */
     .lista label {
         width: 70px;
     }
@@ -300,33 +383,25 @@ label[for="rubriky"] {
 @media (max-width: 655.9px) {
     .hlavicka {
         padding-top: 10px;
-        /* menší vertikální mezera nahoře pro mobil */
         padding-bottom: 15px;
     }
 
     .logotext {
         font-size: 13px;
-        /* mírně menší, aby se vešel */
         margin: 5px 0 10px 0;
     }
 
     .navigace {
         justify-content: flex-end;
-        /* drží odkazy vpravo */
         width: 100%;
         flex-wrap: nowrap;
-        /* zakáže zalamování */
         overflow-x: auto;
-        /* pokud by se nevešly, umožní horizontální scroll */
     }
 
     .navigace a {
         text-align: center;
-        /* aby odkazy byly pěkně vycentrované vertikálně */
         white-space: nowrap;
-        /* nedovolí zalomení textu */
         padding: 0 2px;
-        /* malá mezera mezi odkazy */
         font-size: 12px;
     }
 
@@ -338,19 +413,19 @@ label[for="rubriky"] {
 
     /* Komu, Událost, Vyhledávání Co */
     .modralista-komu,
-    .modralista-prilezitost,
+    .modralista-udalost,
     .modralista-co {
         display: flex;
         align-items: center;
         gap: 6px;
         flex: 1 1 100%;
         min-width: 0;
-        /* odstraněno justify-content: flex-end */
+
     }
 
     /* Labely zarovnané doprava uvnitř bloku */
     .modralista-komu label,
-    .modralista-prilezitost label,
+    .modralista-udalost label,
     .modralista-co label {
         flex: 0 0 auto;
         text-align: right;
@@ -358,9 +433,9 @@ label[for="rubriky"] {
         margin: 0;
     }
 
-    /* Inputy a selecty vyplní zbytek řádku */
+
     .modralista-komu select,
-    .modralista-prilezitost select,
+    .modralista-udalost select,
     .modralista-co input[type="search"],
     .modralista-cena input[type="number"] {
         flex: 1 1 0;
@@ -385,36 +460,56 @@ label[for="rubriky"] {
 
     .modralista-cena input[type="number"] {
         flex: 1 1 0;
-        /* vyplní dostupný prostor */
         min-width: 120px;
-        /* ručně nastavená minimální šířka */
         max-width: 100%;
-        /* nepřekročí rodič */
         box-sizing: border-box;
     }
 
-    /* Tlačítko Hledat */
+
     .modralista-hledat {
         width: 100%;
-        /* blok zabere celou šířku */
         display: flex;
-        /* flex pro snadné centrování */
         justify-content: center;
-        /* vycentruje obsah horizontálně */
         margin-top: 10px;
-        /* mezera od předchozího řádku */
+
     }
 
     .modralista-hledat input[type="submit"] {
         width: 100%;
-        /* tlačítko vyplní celý blok */
         max-width: 100%;
-        /* nepřeteče rodiče */
         box-sizing: border-box;
-        /* padding a border nezvětšují šířku */
         padding: 10px;
-        /* příjemná výška tlačítka */
         font-size: 14px;
-        /* čitelný text */
+    }
+
+    .prilezitosti {
+        display: flex;
+        flex-wrap: wrap;
+        /* umožní zalamování do více řádků */
+        gap: 10px;
+        /* mezera mezi sloupci a řádky */
+        justify-content: space-between;
+        /* rovnoměrné rozložení */
+    }
+
+    .prilezitosticon {
+        flex: 1 1 48%;
+        max-width: 48%;
+        box-sizing: border-box;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        gap: 0;
+    }
+
+    .footer-column {
+        min-width: auto;
+        margin: 0;
     }
 }
